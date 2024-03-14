@@ -14,10 +14,6 @@ class Renderer(nn.Module):
         self.scale = scale
         self.geo_type = geo_type
 
-        if torch.cuda.is_available():
-            import nvdiffrast.torch as dr
-            self.glctx = dr.RasterizeCudaContext()
-
         if self.geo_type == "flex":
             device = get_torch_device() if torch.cuda.is_available() else "cpu"
             self.flexicubes = FlexiCubesGeometry(grid_res = self.tet_grid_size, device=device)
