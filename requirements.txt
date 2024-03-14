@@ -1,0 +1,8 @@
+huggingface-hub
+diffusers
+Pillow
+einops
+open-clip-torch
+omegaconf
+trimesh
+ninja

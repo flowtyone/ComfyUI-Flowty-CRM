@@ -1,0 +1,7 @@
+git+https://github.com/NVlabs/nvdiffrast
+pygltflib
+kiui
+xatlas
+pymeshlab
+opencv-contrib-python-headless==4.9.0.80
+opencv-python-headless==4.9.0.80
