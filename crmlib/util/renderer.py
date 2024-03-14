@@ -1,7 +1,7 @@
 
 import torch
 import torch.nn as nn
-import nvdiffrast.torch as dr
+
 from .flexicubes_geometry import FlexiCubesGeometry
 from comfy.model_management import get_torch_device
 
@@ -15,6 +15,7 @@ class Renderer(nn.Module):
         self.geo_type = geo_type
 
         if torch.cuda.is_available():
+            import nvdiffrast.torch as dr
             self.glctx = dr.RasterizeCudaContext()
 
         if self.geo_type == "flex":
