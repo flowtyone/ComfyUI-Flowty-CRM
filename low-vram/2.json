@@ -1,0 +1,207 @@
+{
+  "last_node_id": 50,
+  "last_link_id": 75,
+  "nodes": [
+    {
+      "id": 49,
+      "type": "LoadImage",
+      "pos": [
+        567,
+        873
+      ],
+      "size": [
+        315,
+        314.00000381469727
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            74
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "ComfyUI_00012_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 44,
+      "type": "CRMPoserConfig",
+      "pos": [
+        914,
+        876
+      ],
+      "size": {
+        "0": 393,
+        "1": 130
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "processed_image",
+          "type": "IMAGE",
+          "link": 74,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CRM_POSE_CONFIG",
+          "type": "CRM_POSE_CONFIG",
+          "links": [
+            62
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CRMPoserConfig"
+      },
+      "widgets_values": [
+        1234,
+        "fixed",
+        5.5,
+        30
+      ]
+    },
+    {
+      "id": 46,
+      "type": "CRMPoseSampler",
+      "pos": [
+        1338,
+        880
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "config",
+          "type": "CRM_POSE_CONFIG",
+          "link": 62
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            75
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CRMPoseSampler"
+      },
+      "widgets_values": [
+        "pixel-diffusion.pth"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "SaveImage",
+      "pos": [
+        1696,
+        882
+      ],
+      "size": {
+        "0": 315,
+        "1": 270
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 75,
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 50,
+      "type": "Note",
+      "pos": [
+        916,
+        1054
+      ],
+      "size": [
+        258.10373352050783,
+        95.24444946289077
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Here load the preprocessed image from workflow 1. After it finishes, find the 6 output images and copy them into a new folder called 'poses' inside the comfyui's input folder."
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      62,
+      44,
+      0,
+      46,
+      0,
+      "CRM_POSE_CONFIG"
+    ],
+    [
+      74,
+      49,
+      0,
+      44,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      46,
+      0,
+      34,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}

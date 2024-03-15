@@ -1,0 +1,423 @@
+{
+  "last_node_id": 51,
+  "last_link_id": 77,
+  "nodes": [
+    {
+      "id": 31,
+      "type": "ImageScale",
+      "pos": [
+        503,
+        941
+      ],
+      "size": {
+        "0": 315,
+        "1": 130
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 38
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            39
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageScale"
+      },
+      "widgets_values": [
+        "nearest-exact",
+        1024,
+        1024,
+        "center"
+      ]
+    },
+    {
+      "id": 21,
+      "type": "RemBGSession+",
+      "pos": [
+        504,
+        800
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "REMBG_SESSION",
+          "type": "REMBG_SESSION",
+          "links": [
+            22
+          ],
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RemBGSession+"
+      },
+      "widgets_values": [
+        "u2net: general purpose",
+        "CPU"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "ImageRemoveBackground+",
+      "pos": [
+        841,
+        801
+      ],
+      "size": {
+        "0": 241.79998779296875,
+        "1": 46
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "rembg_session",
+          "type": "REMBG_SESSION",
+          "link": 22,
+          "slot_index": 0
+        },
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 39
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            33,
+            45
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            46,
+            48
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageRemoveBackground+"
+      }
+    },
+    {
+      "id": 32,
+      "type": "PreviewImage",
+      "pos": [
+        1110,
+        929
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 47
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 23,
+      "type": "PreviewImage",
+      "pos": [
+        857,
+        930
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 45
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 26,
+      "type": "MaskPreview+",
+      "pos": [
+        857,
+        1221
+      ],
+      "size": {
+        "0": 210,
+        "1": 246
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 46
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskPreview+"
+      }
+    },
+    {
+      "id": 17,
+      "type": "LoadImage",
+      "pos": [
+        167,
+        941
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "turtle.jpeg",
+        "image"
+      ]
+    },
+    {
+      "id": 28,
+      "type": "CRMPreprocessForPoser",
+      "pos": [
+        1107,
+        804
+      ],
+      "size": {
+        "0": 317.4000244140625,
+        "1": 78
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "reference_image",
+          "type": "IMAGE",
+          "link": 33,
+          "slot_index": 0
+        },
+        {
+          "name": "reference_mask",
+          "type": "MASK",
+          "link": 48,
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "processed",
+          "type": "IMAGE",
+          "links": [
+            47,
+            77
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CRMPreprocessForPoser"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 50,
+      "type": "SaveImage",
+      "pos": [
+        1469,
+        809
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 77
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "Note",
+      "pos": [
+        513,
+        1134
+      ],
+      "size": [
+        236.62061950683608,
+        92.81676513671891
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        "Here you should feed your input image for preprocessing. Then find the saved image in comfyui's output folder for processing in the next workflows"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    }
+  ],
+  "links": [
+    [
+      22,
+      21,
+      0,
+      20,
+      0,
+      "REMBG_SESSION"
+    ],
+    [
+      33,
+      20,
+      0,
+      28,
+      0,
+      "IMAGE"
+    ],
+    [
+      38,
+      17,
+      0,
+      31,
+      0,
+      "IMAGE"
+    ],
+    [
+      39,
+      31,
+      0,
+      20,
+      1,
+      "IMAGE"
+    ],
+    [
+      45,
+      20,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ],
+    [
+      46,
+      20,
+      1,
+      26,
+      0,
+      "MASK"
+    ],
+    [
+      47,
+      28,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      48,
+      20,
+      1,
+      28,
+      1,
+      "MASK"
+    ],
+    [
+      77,
+      28,
+      0,
+      50,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
