@@ -34,6 +34,7 @@ This node has been adapted from the [official implementation](https://github.com
 * [Download CRM models](https://huggingface.co/Zhengyi/CRM/tree/main) and place them in ```ComfyUI/models/checkpoints```
 * Start ComfyUI (or restart)
 * Use the example workflow ([cpu](workflow_rembg_crm.json) | [cuda](workflow_rembg_crm_cuda.json))
+* Note: To run the example workflows you will also need to install [ComfyUI_essentials](https://github.com/cubiq/ComfyUI_essentials)
 
 
 Acknowledgement:
